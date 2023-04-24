@@ -167,7 +167,8 @@ button:hover{
 .result__item{
     font-weight: 900;
     font-style:italic;
-    font-size: calc(82/1440 * 100vw);
+    font-size: calc(96/1440 * 100vw);
+    line-height: 1;
     margin: 0;
 }
 
