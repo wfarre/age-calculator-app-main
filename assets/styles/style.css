@@ -45,11 +45,11 @@ body{
 
 
 .container{
-    width: 58.3vw;
+    width: calc(58.3vw - 3.8vw *2);
     /* width: 840px; */
     background-color: #fff;
     padding: 3.8vw ;
-    border-radius: 2% 2% 30% 2% ;
+    border-radius: 5% 5% 30% 5% ;
 }
 
 .entries{
@@ -115,24 +115,24 @@ body{
 
 
 button{
-    background-color: hsl(0, 0%, 8%);
+    background-color:hsl(259, 100%, 65%);
+    border: none;
     border-radius: 50%;
     z-index: 90;
     height: calc(100/1440 * 100vw);
     width: calc(100/1440 * 100vw);
-    min-width: 60px;
-    min-height: 60px;
+    min-width: 67px;
+    min-height: 67px;
 }
 
 button:hover{
     cursor: pointer;
-    background-color:hsl(259, 100%, 65%);
-    border-color: hsl(259, 100%, 65%);
+    background-color: hsl(0, 0%, 8%);
 }
 
 
 .container--button::before{
-     position: absolute;
+    position: absolute;
     top: 50%;
     left: 0;
     transform: translateY(-50%);
@@ -150,12 +150,12 @@ button:hover{
 .result__item{
     font-weight: 900;
     font-style:italic;
-    /* font-size: 5.125rem; */
     font-size: calc(82/1440 * 100vw);
     margin: 0;
 }
 
 .number{
+    font-weight:800;
     color: hsl(259, 100%, 65%);
 }
 
@@ -178,4 +178,47 @@ button:hover{
 .error > .input {
     border-color: hsl(0, 100%, 67%);
     outline: hsl(0, 100%, 67%);
+}
+
+
+
+
+@media all and (max-width: 750px) {
+    .container{
+        width: calc( calc(345/375 * 100vw) - calc(24/375 * 100vw)*2) ;
+        padding: calc(54/375 * 100vw) calc(24/375 * 100vw) ;
+    }
+    .entries{
+        display: flex;
+        justify-content:space-around;
+    }
+
+    .entry{
+        width: calc(85/375 * 100vw);
+    }
+
+    .input{
+        font-size: calc(16/375 * 100vw);
+        padding: calc(16/375 * 100vw); 
+    }
+
+    .container--button{
+        width: auto;
+        display: flex;
+        justify-content: center;
+        padding-top: calc(30/375 * 100vw);
+        padding-bottom: calc(40/375 * 100vw);
+    }
+
+   .submit-btn > img{
+    width: calc(26/375 * 100vw) ;
+    height: calc(26/375 * 100vw);
+   }
+
+   .result__item{
+    font-weight: 900;
+    font-style:italic;
+    font-size: calc(45/375 * 100vw);
+    margin: 0;
+}
 }
