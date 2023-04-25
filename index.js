@@ -1,64 +1,55 @@
-import { checkInputIsValid, setRemoveError } from "./utils/validation.js";
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var validation_js_1 = require("./utils/validation.js");
 var numbers = document.querySelectorAll(".number");
 var inputs = document.querySelectorAll(".input");
-let form = document.getElementById("form");
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault()
-    let birthMonth = e.target.querySelector("#month");
-    let birthYear = e.target.querySelector("#year");
-    let birthDay = e.target.querySelector("#day");
-
-    if(!checkInputIsValid(birthMonth) || !checkInputIsValid(birthDay) || !checkInputIsValid(birthYear)){
-        setRemoveError(birthDay)
-        setRemoveError(birthMonth)
-        setRemoveError(birthYear)
-        return
+var form = document.getElementById("form");
+form === null || form === void 0 ? void 0 : form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    console.log("hello");
+    var target = e.target;
+    var birthMonth = target === null || target === void 0 ? void 0 : target.querySelector("#month");
+    var birthYear = target === null || target === void 0 ? void 0 : target.querySelector("#year");
+    var birthDay = target === null || target === void 0 ? void 0 : target.querySelector("#day");
+    if (!(0, validation_js_1.checkInputIsValid)(birthMonth) || !(0, validation_js_1.checkInputIsValid)(birthDay) || !(0, validation_js_1.checkInputIsValid)(birthYear)) {
+        (0, validation_js_1.setRemoveError)(birthDay);
+        (0, validation_js_1.setRemoveError)(birthMonth);
+        (0, validation_js_1.setRemoveError)(birthYear);
+        return;
     }
-   
-    let today = Date.now()
-    let birthdate = new Date(`${birthYear.value}-${birthMonth.value}-${birthDay.value}`)
-
-    const oneDayLength = 24 * 3600 * 1000;
-    const numberOfYears = Math.floor((today - birthdate) / (365 * oneDayLength))
-    const numberOfMonth = Math.floor(((today - birthdate) % (365 * oneDayLength)) / (30.4 * oneDayLength))
-    const numberOfDays = Math.floor((((today - birthdate) % (365 * oneDayLength)) % (30.4 * oneDayLength)) / (oneDayLength));
-
-    const length = {
+    var today = Date.now();
+    var birthdate = new Date("".concat(birthYear.value, "-").concat(birthMonth.value, "-").concat(birthDay.value)).getSeconds();
+    var oneDayLength = 24 * 3600 * 1000;
+    var numberOfYears = Math.floor((today - birthdate) / (365 * oneDayLength));
+    var numberOfMonth = Math.floor(((today - birthdate) % (365 * oneDayLength)) / (30.4 * oneDayLength));
+    var numberOfDays = Math.floor((((today - birthdate) % (365 * oneDayLength)) % (30.4 * oneDayLength)) / (oneDayLength));
+    var length = {
         days: numberOfDays,
         months: numberOfMonth,
         years: numberOfYears
-    }
-
-    numbers.forEach(number => {
+    };
+    numbers === null || numbers === void 0 ? void 0 : numbers.forEach(function (number) {
         console.log(number);
         switch (number.id) {
             case ("years"):
-                number.innerHTML = length.years
+                number.innerHTML = length.years.toString();
                 break;
             case ("months"):
-                number.innerHTML = length.months
+                number.innerHTML = length.months.toString();
                 break;
             case ("days"):
-                number.innerHTML = length.days
+                number.innerHTML = length.days.toString();
                 break;
-
             default:
                 break;
         }
-    })
-})
-
-
-
-
-inputs.forEach(input => {
-    input.addEventListener("focusout", () => {
-        setRemoveError(input)
-    })
-
-    input.addEventListener("change", () => {
-        setRemoveError(input)
-    })
-})
+    });
+});
+inputs.forEach(function (input) {
+    input.addEventListener("focusout", function () {
+        (0, validation_js_1.setRemoveError)(input);
+    });
+    input.addEventListener("change", function () {
+        (0, validation_js_1.setRemoveError)(input);
+    });
+});
